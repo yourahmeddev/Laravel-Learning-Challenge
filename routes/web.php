@@ -60,21 +60,37 @@ Route::get('/home', function () {
 Route::get('/user', [UserController::class, 'Index']);
 Route::get('/user/show/{id}', [UserController::class, 'show']);
 // how to make route for resource controller route list
-Route::resource('Posts', PostController::class);
+// Route::resource('Posts', PostController::class);
 // check route list:
 // php artisan route:list --except-vendor
-Route::get('/testing', function () {
-    // Post::create([
-    //     'title' => 'Laravel 9',
-    //     'description' => 'Laravel 9 Content',
-    //     'is_publish' => false,
-    //     'is_active' => false
-    // ]);
-    // fetching the data from database
-    // ::all()
-    // find()
-    // findorfail()
-   $posts = Post::where(['title'=>'Laravel 1' ,'is_publish'=>'0'])->get();
-return $posts;
-    // return 'Inserted Success';
-});
+// Route::get('/testing/{id}', function ($id) {
+//     // Post::create([
+//     //     'title' => 'Laravel 9',
+//     //     'description' => 'Laravel 9 Content',
+//     //     'is_publish' => false,
+//     //     'is_active' => false
+//     // ]);
+//     // fetching the data from database
+//     // ::all()
+//     // find()
+//     // findorfail()
+// //    $posts = Post::where(['title'=>'Laravel 1' ,'is_publish'=>'0'])->get();
+// // return $posts;
+//     // return 'Inserted Success';
+//     // $post = Post::where('title','Laravel 2')->first();
+//     // $post = Post::findOrFail(2);
+//     // $post->update([
+//     //     'title'=>'Laravel new 2'
+//     // ]);
+//     // return 'Title Updated Successfully';
+//     // $post = Post::findOrFail($id);
+//     // $post->delete();
+//     // return 'Post'.$id.'Deleted Sucessfully';
+// });
+// opening the posts through models but only from controller
+// Route::get('posts' , [PostController::class, 'index']);
+// Route::get('posts/store' , [PostController::class, 'store']);
+// Route::get('posts/update' , [PostController::class, 'update']);
+// Route::get('posts/destroy' , [PostController::class , 'destroy']);
+// creating resource routes
+Route::resource('posts' , PostController::class);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -11,7 +12,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        //showing all posts
+        $posts = Post::all();
+        return $posts;
     }
 
     /**
@@ -19,8 +22,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //creating the row in data
-        return view('posts.create');
+        //
     }
 
     /**
@@ -28,7 +30,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //adding create method here to add data into DB 
+        Post::create([
+            'title' => 'Laravel 20',
+            'description' => 'Laravel 21 Content',
+            'is_publish' => true,
+            'is_active' => true
+        ]);
+        return 'Post is created Successfully';
     }
 
     /**
@@ -50,16 +59,22 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update()
     {
-        //
+        $post = Post::findOrFail(10);
+        $post->update([
+            'title'=>'Laravel 2 Updated'
+        ]);
+        return 'Post Updated Successfully';
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
-        //
+        $post = Post::findOrFail(9);
+        $post->delete();
+        return 'Post Deleted Successfully';
     }
 }
