@@ -12,18 +12,19 @@
     <div class="row">
         <h1 class="text-primary mt-5">Create Post</h1>
         <div class="col-md-6 mt-10">
-            <form>
+            <form method="post" action="{{ route('posts.store') }}">
+              @csrf
                 <div class="mb-3 mt-5">
                   <label class="form-label">Title</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Post Title">
+                  <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Post Title">
                 </div>
                 <div class="mb-3 mt-5">
                   <label class="form-label">Description</label>
-                  <textarea class="form-control">Write Post Description</textarea>
+                  <textarea class="form-control" name="description" >Write Post Description</textarea>
                 </div>
                 <div class="mb-3 mt-5">
                   <label class="form-label">Is Published</label>
-                  <select class="form-control">
+                  <select class="form-control" name="is_publish">
                     <option class="disabled selected">Choose Option</option>
                     <option value="1">Yes</option>
                     <option value="0">No</option>
@@ -31,7 +32,7 @@
                 </div>
                 <div class="mb-3 mt-5">
                     <label class="form-label">Is Active</label>
-                    <select class="form-control">
+                    <select class="form-control" name="is_active">
                       <option class="disabled selected">Choose Option</option>
                       <option value="1">Yes</option>
                       <option value="0">No</option>
